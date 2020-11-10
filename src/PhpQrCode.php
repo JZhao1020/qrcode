@@ -126,6 +126,7 @@ class PhpQrCode{ // class start
 
         // 非本地图片
         $is_file = false;
+        $path = '';
         if(!file_exists($this->_config['logo']) && $this->_config['logo']){
             $path = dirname(__FILE__)."/lib/cache/image/" . time(). '.png';
             $this->dlfile($this->_config['logo'], $path);
@@ -188,7 +189,7 @@ class PhpQrCode{ // class start
             }
 
             // 清除本地生成的临时logo图片
-            if($is_file) {
+            if($is_file && file_exists($path)) {
                 unlink($path);
             }
 
