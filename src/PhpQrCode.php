@@ -68,7 +68,7 @@ class PhpQrCode{ // class start
             $content = file_get_contents($file_url);
             file_put_contents($save_to, $content);
         }catch (\Exception $e){
-            return $e->getMessage();
+            throw new \Exception($e->getMessage());
         }
     }
 
