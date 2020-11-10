@@ -1,0 +1,24 @@
+{
+    "name": "hao/qrcode",
+    "homepage": "https://github.com/JZhao1020/qrcode",
+    "description": "qrcode",
+    "type": "library",
+    "authors": [
+        {
+            "name": "JZ浩",
+            "email": "18816784184@163.com"
+        }
+    ],
+    "keywords": [
+        "qrcode"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "qrcode\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    }
+}
