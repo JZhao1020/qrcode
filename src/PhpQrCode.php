@@ -124,16 +124,17 @@ class PhpQrCode{ // class start
         // 获取目标图片的类型
         $dest_ext = $this->get_file_ext($this->_config['dest_file']);
 
+        // 非本地图片
+        $is_file = false;
+        if(!file_exists($this->_config['logo']) && $this->_config['logo']){
+            $path = dirname(__FILE__)."/lib/cache/image/" . time(). '.png';
+            $this->dlfile($this->_config['logo'], $path);
+            $this->_config['logo'] = $path;
+            $is_file = true;
+        }
+
         // 需要加入logo
         if(file_exists($this->_config['logo'])){
-            // 非本地图片
-            $is_file = false;
-            if(!is_file($this->_config['logo'])){
-                $path = dirname(__FILE__)."/lib/cache/image/" . time(). '.png';
-                $this->dlfile($this->_config['logo'], $path);
-                $this->_config['logo'] = $path;
-                $is_file = true;
-            }
 
             // 创建临时二维码图片对象
             $tmp_qrcode_img = imagecreatefrompng($tmp_qrcode_file);
@@ -190,7 +191,7 @@ class PhpQrCode{ // class start
             if($is_file) {
                 unlink($path);
             }
-            
+
             // 不需要加入logo
         }else{
 
